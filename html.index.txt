@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Blocked Areas Map</title>
+    <style>
+        /* Style for the map */
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blocked Areas Map</h1>
+    <div id="map"></div>
+
+    <!-- Include Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            // Create a map centered on Bangladesh
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: {lat: 23.6850, lng: 90.3563}
+            });
+
+            // Example data for blocked areas (latitude, longitude, description)
+            var blockedAreas = [
+                {lat: 23.8103, lng: 90.4125, description: 'Dhaka University'},
+                {lat: 23.8717, lng: 90.3984, description: 'Jahangirnagar University'},
+                // Add more locations as needed
+            ];
+
+            // Add markers to the map
+            blockedAreas.forEach(function(area) {
+                var marker = new google.maps.Marker({
+                    position: {lat: area.lat, lng: area.lng},
+                    map: map,
+                    title: area.description
+                });
+            });
+        }
+    </script>
+</body>
+</html>
